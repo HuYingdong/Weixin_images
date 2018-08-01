@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tasks Record</title>
+
+</head>
+<body>
+{% if tasks %}
+    <div class="new-task-num">未完成的任务数为： {{ tasks.new_tasks }}</div>
+    <div class="done-task-num">已完成的任务数为： {{ tasks.done_tasks }}</div>
+{% else %}
+    <div class="no-task-num">没有获取到任务</div>
+{% endif%}
+</body>
+</html>

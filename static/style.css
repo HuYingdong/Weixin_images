@@ -1,0 +1,45 @@
+body {
+    background: black url("images/cat.jpeg") no-repeat -380px 0px;
+        }
+
+form {
+        height: 500px;
+        width：200px;
+        display: block;
+        }
+
+#task-id,
+#task-url,
+#notice-url,
+#su {
+   display: block;
+   padding-right: 48px!important;
+   height: 100px:
+   width: 100px;
+   margin: 0 auto;
+   }
+
+#task-id {
+        background-color: pink;
+        }
+
+#task-url {
+        background-color: skyblue;
+         }
+
+#notice-url {
+        background-color: skyblue;
+         }
+
+#su {
+      cursor: pointer;
+}
+
+div {
+   display: block;
+   padding-right: 48px!important;
+   height: 20px:
+   width: 100px;
+   margin: center auto;
+   padding-bottom: 48px!important;
+}
