@@ -18,9 +18,10 @@ class SaveService:
 
     def run_save(self, col_name):
         self.get_info()
-        if not self.url_info.get('images') or not self.url_info.get('title'):
+        if not self.url_info.get('imgs') or not self.url_info.get('title'):
             return False
-        self.save_images(img_dir='./imgs/' + self.url_info.get('title'))
+        title = self.url_info.get('title').replace(' ', '').replace('|', '_').replace('|', '_')
+        self.save_images(img_dir='./imgs/' + title)
         if not self.url_info.get('images_info'):
             return False
         if self.save_mongo(col_name):
@@ -33,6 +34,7 @@ class SaveService:
             name = re.search('crawl_(.*)', crawl_func).group(1)
             if name in self.domain_url:
                 self.url_info = self.getter.get_info(crawl_func, self.url)
+                break
         else:
             self.logger.info('Crawl Function Undefined')
 

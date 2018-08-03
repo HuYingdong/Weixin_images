@@ -144,4 +144,7 @@ readtxt.py
 readme.md
 env.py
 data
+images/
+imgs/*
+
 

@@ -6,6 +6,9 @@ import logging
 import config
 from mongo_helper import MongoHelper
 
+logger = logging.getLogger(__name__)
+
+
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '\x88D\xf09\x91\x07\x98\x89\x87\x96\xa0A\xc68\xf9\xecJ:' \
                            'U\x17\xc5V\xbe\x8b\xef\xd7\xd8\xd3\xe6\x98*4'
@@ -24,7 +27,7 @@ def main():
             'url': url,
             'notice_url': notice_url,
         }
-        logging.info(task)
+        logger.info('get task: %s', task)
 
         client = MongoHelper(config.task_db)
         if client.add_item(col_name='tasks', doc=task):
@@ -45,13 +48,6 @@ def main():
     return render_template('index.html', tasks=tasks_info)
 
 
-# @app.route('/tasks')
-# def get_tasks():
-#     client = MongoHelper(config.task_db)
-#     tasks_info = client.get_info(col_name='tasks')
-#     return render_template('tasks.html', tasks=tasks_info)
-
-
 # 测试 notice_url, 可删
 @app.route('/notice', methods=['POST'])
 def notice():
@@ -60,7 +56,7 @@ def notice():
 
 
 if __name__ == '__main__':
-    app.run(port=5001, debug=True)
+    app.run(port=5001, debug=False)
 
 # 启动huey
 # python huey_consumer.py main.huey --logfile=./logs/huey.log

@@ -14,7 +14,7 @@ def download_imgs(img_dir, imgs):
         img_map = {'source_url': img}
         # img补全
         if '/640' in img and 'wx_fmt=' not in img:
-            img = img.split('/640')[0] + '/640?wx_fmt=png'
+            img = img.split('/640')[0] + '/640?wx_fmt=jpg'
         ext = img.split('wx_fmt=')[-1]
         if len(ext) > 5:
             continue
@@ -24,8 +24,8 @@ def download_imgs(img_dir, imgs):
         img_map['size'] = clength
         if not os.path.isdir(img_dir):
             os.mkdir(img_dir)
-        path = img_dir + str(time.time()).replace('.', '_') + str(
-            uuid.uuid4()).split('-')[0] + '.' + ext
+        path = os.path.join(img_dir, str(time.time()).replace('.', '_') + str(
+            uuid.uuid4()).split('-')[0] + '.' + ext)
         img_map['local_path'] = path
         with open(path, 'wb') as f:
             f.write(res.content)

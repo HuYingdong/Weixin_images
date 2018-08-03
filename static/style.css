@@ -28,7 +28,7 @@ form {
          }
 
 #notice-url {
-        background-color: skyblue;
+        background-color: pink;
          }
 
 #su {
@@ -42,4 +42,22 @@ div {
    width: 100px;
    margin: center auto;
    padding-bottom: 48px!important;
+   text-align: center;
+}
+
+h2 {
+   display: block;
+   padding-right: 48px!important;
+   height: 20px:
+   width: 100px;
+   margin: center auto;
+   padding-bottom: 48px!important;
+   text-align: center;
+   text-color: red;
+}
+
+label {
+   text-align: center;
+   display: block;
+
 }
