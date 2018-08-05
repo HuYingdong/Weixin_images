@@ -18,10 +18,10 @@ class MongoHelper:
             self.logger.error(e)
             return False
 
-    def set_item(self, col_name, _id):
+    def set_item(self, col_name, task_id):
         try:
             info = {'status': 'done', 'done_time': datetime.now()}
-            self.db[col_name].update_one({'_id': _id}, {'$set': info})
+            self.db[col_name].update_one({'task_id': task_id}, {'$set': info})
         except Exception as e:
             self.logger.error(e)
             return False

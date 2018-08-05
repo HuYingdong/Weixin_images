@@ -6,16 +6,16 @@ import config
 from mongo_helper import MongoHelper
 
 
-# @huey.task(retries=3)
-def save(_id, url, notice_url):
+@huey.task(retries=3)
+def save(task_id, url, notice_url):
     spider = SaveService(url)
     success = spider.run_save(col_name='weixinimages')
     code = 1 if success else 0
     if code:
         client = MongoHelper(config.task_db)
-        client.set_item(col_name='tasks', _id=_id)
+        client.set_item(col_name='tasks', task_id=task_id)
 
-    data = {'code': code, 'id': _id, 'url': url}
+    data = {'code': code, 'task_id': task_id, 'url': url}
     requests.post(notice_url, data=data)
 
     # # 测试callback, 可删

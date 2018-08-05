@@ -20,7 +20,7 @@ class SaveService:
         self.get_info()
         if not self.url_info.get('imgs') or not self.url_info.get('title'):
             return False
-        title = self.url_info.get('title').replace(' ', '').replace('|', '_').replace('|', '_')
+        title = self.url_info.get('title').replace(' ', '').replace('|', '_').replace('/', '_')
         self.save_images(img_dir='./imgs/' + title)
         if not self.url_info.get('images_info'):
             return False

@@ -1,6 +1,6 @@
 # coding=utf-8
-from config import huey
 from tasks import save
+from config import huey
 from flask import Flask, jsonify, request, render_template, redirect, url_for, flash
 import logging
 import config
@@ -56,7 +56,7 @@ def notice():
 
 
 if __name__ == '__main__':
-    app.run(port=5001, debug=False)
+    app.run(host='0.0.0.0', port=5001, debug=True)
 
 # 启动huey
 # python huey_consumer.py main.huey --logfile=./logs/huey.log
