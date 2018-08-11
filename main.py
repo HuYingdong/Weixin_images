@@ -22,6 +22,10 @@ def main():
         task_id = data.get('task_id')
         notice_url = data.get('notice_url')
 
+        if not url or not task_id or not notice_url:
+            flash('请输入完整的信息！')
+            return redirect(url_for('main'))
+
         task = {
             'task_id': task_id,
             'url': url,
@@ -56,7 +60,7 @@ def notice():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=False)
 
 # 启动huey
 # python huey_consumer.py main.huey --logfile=./logs/huey.log
