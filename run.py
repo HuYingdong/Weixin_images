@@ -52,7 +52,7 @@ def main():
     return render_template('index.html', tasks=tasks_info)
 
 
-# 测试 notice_url, 可删
+# 测试 notice_url
 @app.route('/notice', methods=['POST'])
 def notice():
     job_form = request.form.to_dict()
@@ -60,7 +60,7 @@ def notice():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5001, debug=False)
+    app.run(host='0.0.0.0', port=5001, debug=True)
 
 # 启动huey
 # python huey_consumer.py main.huey --logfile=./logs/huey.log

@@ -7,7 +7,7 @@
 </head>
 <body>
 <h2>收藏</h2>
-<hr style="border:3 double #987cb9" width="100%" color=#987cb9 size=3> <br />
+<hr style="border:3 double #987cb9" width="100%" color=#987cb9 size=3>
 {% if tasks %}
     <div class="new-task-num">未完成的任务数： {{ tasks.new_tasks }}</div>
     <div class="done-task-num">已完成的任务数： {{ tasks.done_tasks }}</div>
@@ -15,19 +15,17 @@
     <div class="no-task-num">没有获取到任务</div>
 {% endif%}
 
-<hr style="border:3 double #987cb9" width="100%" color=#987cb9 size=3>
-
 <form action="{{ url_for('main') }}" method="post">
-    <label for="task-id">任务编号：</label>  <br />
-    <input type="text" id="task-id" name="task_id" placeholder="请输入任务编号"/> <br /> <br />
+    <label for="task-id">任务编号：</label>
+    <input type="text" id="task-id" name="task_id" placeholder="请输入任务编号"/>
 
-    <label for="task-url">网页地址：</label> <br />
-    <input type="text" id="task-url" name="url" placeholder="请输入网页地址"/> <br /> <br />
+    <label for="task-url">网页地址：</label>
+    <input type="text" id="task-url" name="url" placeholder="请输入网页地址"/>
 
-    <label for="notice-url">通知地址：</label> <br />
-    <input type="text" id="notice-url" name="notice_url" placeholder="请输入通知地址"/> <br /> <br />
+    <label for="notice-url">通知地址：</label>
+    <input type="text" id="notice-url" name="notice_url" placeholder="请输入通知地址"/>
 
-    <input type="submit" id="su" value="添加"/>
+    <input type="submit" id="submit" value="添加"/>
 </form>
 
 </body>
