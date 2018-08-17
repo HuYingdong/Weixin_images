@@ -16,14 +16,21 @@ class SaveService:
         self.url_info = {}
         self.client = MongoHelper(config.store_db)
 
-    def run_save(self, col_name):
+    def run_save(self, col_name, save=True):
         self.get_info()
+        self.logger.debug('failed to get url info')
         if not self.url_info.get('imgs') or not self.url_info.get('title'):
+            self.logger.error('failed to get url info.')
             return False
         title = self.url_info.get('title').replace(' ', '').replace('|', '_').replace('/', '_')
-        self.save_images(img_dir='./imgs/' + title)
-        if not self.url_info.get('images_info'):
-            return False
+        self.logger.info('get url title:%s', title)
+        self.url_info['title'] = title
+        if save:
+            self.logger.info('start save images...')
+            self.save_images(img_dir='./imgs/' + title)
+            if not self.url_info.get('images_info'):
+                self.logger.error('failed to save images')
+                return False
         if self.save_mongo(col_name):
             return True
         else:
@@ -54,7 +61,7 @@ class SaveService:
 
     def save_mongo(self, col_name):
         if self.client.db[col_name].insert_one(self.url_info):
-            self.logger.info('saved to mongo: ' + self.url_info.get('url'))
+            self.logger.info('successfully saved to mongo: ' + self.url_info.get('url'))
             return True
 
 

@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 # -*- coding: utf-8 -*-
 from huey import RedisHuey
-huey = RedisHuey('huey_tasks', host='127.0.0.1')
+huey = RedisHuey('image_tasks', host='127.0.0.1')
 
 env = 'local'
 

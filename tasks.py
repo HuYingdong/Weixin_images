@@ -9,7 +9,7 @@ from mongo_helper import MongoHelper
 @huey.task(retries=3)
 def save(task_id, url, notice_url):
     spider = SaveService(url)
-    success = spider.run_save(col_name='weixinimages')
+    success = spider.run_save(col_name='wximage')
     code = 1 if success else 0
     if code:
         client = MongoHelper(config.task_db)
@@ -18,9 +18,6 @@ def save(task_id, url, notice_url):
     data = {'code': code, 'task_id': task_id, 'url': url}
     requests.post(notice_url, data=data)
 
-    # # 测试callback, 可删
-    # response = requests.post(callback, data=data)
-    # print(response.json())
 
 
 
